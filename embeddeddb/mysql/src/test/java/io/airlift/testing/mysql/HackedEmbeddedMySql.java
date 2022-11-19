@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -287,7 +288,7 @@ public class HackedEmbeddedMySql implements Closeable {
             throw new RuntimeException("archive not found: " + archiveName);
         }
 
-        final File archive = createTempFile("mysql-", null);
+        final File archive = Files.createTempFile("mysql-", null).toFile();
         try {
             try (final InputStream in = url.openStream()) {
                 copy(in, archive.toPath(), REPLACE_EXISTING);

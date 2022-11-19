@@ -22,6 +22,7 @@ package org.skife.jdbi.v2.st4;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -42,7 +43,7 @@ public class SharedSTGroupCacheTest {
     @Category(JDBITests.class)
     public void testUseAndDontUseSTGroupCache() throws Exception {
         String sql;
-        File tmp = File.createTempFile("test", ".stg");
+        File tmp = Files.createTempFile("test", ".stg").toFile();
 
         StatementContext ctx = Mockito.mock(StatementContext.class);
 

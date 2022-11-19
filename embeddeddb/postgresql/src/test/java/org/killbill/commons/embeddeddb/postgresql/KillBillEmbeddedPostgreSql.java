@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
@@ -318,7 +319,7 @@ class KillBillEmbeddedPostgreSql implements Closeable {
             throw new RuntimeException("archive not found: " + archiveName);
         }
 
-        final File archive = File.createTempFile("postgresql-", null);
+        final File archive = Files.createTempFile("postgresql-", null).toFile();
         try {
             InputStream in = null;
             try {
